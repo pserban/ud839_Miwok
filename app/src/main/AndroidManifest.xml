@@ -10,12 +10,15 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".PhrasesActivity"
+            android:label="Phrases"
             android:exported="false" />
         <activity
             android:name=".ColorsActivity"
+            android:label="Colors"
             android:exported="false" />
         <activity
             android:name=".FamilyActivity"
+            android:label="Family Members"
             android:exported="false" />
         <activity
             android:name=".NumbersActivity"

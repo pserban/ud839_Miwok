@@ -35,16 +35,34 @@ public class MainActivity extends AppCompatActivity {
         TextView numbers = findViewById(R.id.numbers);
 
         // Set a clickListener on that View
-        numbers.setOnClickListener(new NumbersClickListener());
-    }
+        numbers.setOnClickListener(view -> {
+            // Create a new intent to open the {@link Numbers Activity}
+            Intent intent = new Intent(MainActivity.this, NumbersActivity.class);
 
-    /**
-     * Starts the NumbersActivity
-     * @param view
-     */
-    public void openNumbersList(View view) {
-        Intent intent = new Intent(this, NumbersActivity.class);
-        startActivity(intent);
+            // Start the new activity
+            startActivity(intent);
+        });
+
+        // Find the View that shows the Colors category
+        TextView colors = findViewById(R.id.colors);
+        colors.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, ColorsActivity.class);
+            startActivity(intent);
+        });
+
+        // Find the View that shows the Phrases category
+        TextView phrases = findViewById(R.id.phrases);
+        phrases.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, PhrasesActivity.class);
+            startActivity(intent);
+        });
+
+        // Find the View that shows the Family category
+        TextView family = findViewById(R.id.family);
+        family.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, FamilyActivity.class);
+            startActivity(intent);
+        });
     }
 
 }
