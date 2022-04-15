@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -11,7 +12,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 public class FamilyActivity extends AppCompatActivity {
-    private static String LOG_TAG = NumbersActivity.class.getSimpleName();
+    private static String LOG_TAG = FamilyActivity.class.getSimpleName();
 
     private final ArrayList<Word> words = new ArrayList<>();
 
@@ -75,5 +76,19 @@ public class FamilyActivity extends AppCompatActivity {
             // is not configured to play an audio file at the moment.
             mMediaPlayer = null;
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        releaseMediaPlayer();
+        Log.v(LOG_TAG, "onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        releaseMediaPlayer();
+        Log.v(LOG_TAG, "onStop");
     }
 }
