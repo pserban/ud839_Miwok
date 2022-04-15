@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -15,7 +14,7 @@ public class NumbersActivity extends AppCompatActivity {
 
     private static String LOG_TAG = NumbersActivity.class.getSimpleName();
 
-    private MediaPlayer mediaPlayer;
+    private MediaPlayer mMediaPlayer;
 
     private ArrayList<Word> words;
 
@@ -46,8 +45,8 @@ public class NumbersActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                mediaPlayer = MediaPlayer.create(NumbersActivity.this, R.raw.number_one);
-                mediaPlayer.start();
+                mMediaPlayer = MediaPlayer.create(NumbersActivity.this, R.raw.number_one);
+                mMediaPlayer.start();
             }
         });
     }
