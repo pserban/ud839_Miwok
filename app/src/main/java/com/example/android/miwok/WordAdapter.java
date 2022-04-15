@@ -1,6 +1,7 @@
 package com.example.android.miwok;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.LinearLayoutCompat;
+import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
 
@@ -17,8 +20,11 @@ public class WordAdapter extends ArrayAdapter<Word> {
 
     private static final String LOG_TAG = WordAdapter.class.getSimpleName();
 
-    public WordAdapter(Activity context, ArrayList<Word> words) {
+    private int mColorResourceID;
+
+    public WordAdapter(Activity context, ArrayList<Word> words, int colorResourceID) {
         super(context, 0, words);
+        mColorResourceID = colorResourceID;
     }
 
     @NonNull
@@ -55,6 +61,11 @@ public class WordAdapter extends ArrayAdapter<Word> {
         else {
             imageView.setVisibility(View.GONE);
         }
+
+        // Find the container that encapsulates the word and its translation.
+        LinearLayoutCompat container = listItemView.findViewById(R.id.word_container);
+        int backgroundColor = ContextCompat.getColor(getContext(), mColorResourceID);
+        container.setBackgroundColor(backgroundColor);
 
         // Return the whole list item layout (containing 2 TextViews)
         // so that it can be shown in the ListView
