@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.LinearLayoutCompat;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
@@ -63,7 +64,7 @@ public class WordAdapter extends ArrayAdapter<Word> {
         }
 
         // Find the container that encapsulates the word and its translation.
-        LinearLayoutCompat container = listItemView.findViewById(R.id.word_container);
+        ConstraintLayout container = listItemView.findViewById(R.id.word_container);
         int backgroundColor = ContextCompat.getColor(getContext(), mColorResourceID);
         container.setBackgroundColor(backgroundColor);
 
