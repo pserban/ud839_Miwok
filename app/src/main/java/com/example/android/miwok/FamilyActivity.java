@@ -11,25 +11,20 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class FamilyActivity extends AppCompatActivity {
+public class FamilyActivity extends TranslationActivity {
     private static String LOG_TAG = FamilyActivity.class.getSimpleName();
-
-    private final ArrayList<Word> words = new ArrayList<>();
-
-    private MediaPlayer mMediaPlayer;
-
-    private MediaPlayer.OnCompletionListener mCompletionListener = new MediaPlayer.OnCompletionListener() {
-        @Override
-        public void onCompletion(MediaPlayer mediaPlayer) {
-            releaseMediaPlayer();
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word_list);
 
+        addWords();
+        setupInteractions();
+    }
+
+    @Override
+    protected void addWords() {
         words.add(new Word("father", "әpә", R.drawable.family_father, R.raw.family_father));
         words.add(new Word("mother", "әṭa", R.drawable.family_mother, R.raw.family_mother));
         words.add(new Word("son", "angsi", R.drawable.family_son, R.raw.family_son));
@@ -40,55 +35,5 @@ public class FamilyActivity extends AppCompatActivity {
         words.add(new Word("younger sister", "kolliti", R.drawable.family_younger_sister, R.raw.family_younger_sister));
         words.add(new Word("grandmother", "ama", R.drawable.family_grandmother, R.raw.family_grandfather));
         words.add(new Word("grandfather", "paapa", R.drawable.family_grandfather, R.raw.family_grandfather));
-
-        WordAdapter itemsAdapter = new WordAdapter(this, words, R.color.category_family);
-
-        ListView listView = (ListView) findViewById(R.id.list);
-
-        listView.setAdapter(itemsAdapter);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Word word = words.get(i);
-                if (word.hasAudio()) {
-                    releaseMediaPlayer();
-                    mMediaPlayer = MediaPlayer.create(FamilyActivity.this, word.getAudioResourceID());
-                    mMediaPlayer.start();
-                    mMediaPlayer.setOnCompletionListener(mCompletionListener);
-                }
-            }
-        });
-    }
-
-    /**
-     * Clean up the media player by releasing its resources.
-     */
-    private void releaseMediaPlayer() {
-        // If the media player is not null, then it may be currently playing a sound.
-        if (mMediaPlayer != null) {
-            // Regardless of the current state of the media player, release its resources
-            // because we no longer need it.
-            mMediaPlayer.release();
-
-            // Set the media player back to null. For our code, we've decided that
-            // setting the media player to null is an easy way to tell that the media player
-            // is not configured to play an audio file at the moment.
-            mMediaPlayer = null;
-        }
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        releaseMediaPlayer();
-        Log.v(LOG_TAG, "onPause");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        releaseMediaPlayer();
-        Log.v(LOG_TAG, "onStop");
     }
 }

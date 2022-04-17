@@ -11,26 +11,21 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class ColorsActivity extends AppCompatActivity {
+public class ColorsActivity extends TranslationActivity {
 
     private static String LOG_TAG = ColorsActivity.class.getSimpleName();
-
-    final private ArrayList<Word> words = new ArrayList<>();
-
-    private MediaPlayer mMediaPlayer;
-
-    private MediaPlayer.OnCompletionListener mCompletionListener = new MediaPlayer.OnCompletionListener() {
-        @Override
-        public void onCompletion(MediaPlayer mediaPlayer) {
-            releaseMediaPlayer();
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word_list);
 
+        addWords();
+        setupInteractions();
+    }
+
+    @Override
+    protected void addWords() {
         words.add(new Word("red", "weṭeṭṭi", R.drawable.color_red, R.raw.color_red));
         words.add(new Word("green", "chokokki", R.drawable.color_green, R.raw.color_green));
         words.add(new Word("brown", "ṭakaakki", R.drawable.color_brown, R.raw.color_brown));
@@ -39,55 +34,5 @@ public class ColorsActivity extends AppCompatActivity {
         words.add(new Word("white", "kelelli", R.drawable.color_white, R.raw.color_white));
         words.add(new Word("dusty yellow", "ṭopiisә", R.drawable.color_dusty_yellow, R.raw.color_dusty_yellow));
         words.add(new Word("mustard yellow", "chiwiiṭә", R.drawable.color_mustard_yellow, R.raw.color_mustard_yellow));
-
-        WordAdapter itemsAdapter = new WordAdapter(this, words, R.color.category_colors);
-
-        ListView listView = (ListView) findViewById(R.id.list);
-
-        listView.setAdapter(itemsAdapter);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Word word = words.get(i);
-                if (word.hasAudio()) {
-                    releaseMediaPlayer();
-                    mMediaPlayer = MediaPlayer.create(ColorsActivity.this, word.getAudioResourceID());
-                    mMediaPlayer.start();
-                    mMediaPlayer.setOnCompletionListener(mCompletionListener);
-                }
-            }
-        });
-    }
-
-    /**
-     * Clean up the media player by releasing its resources.
-     */
-    private void releaseMediaPlayer() {
-        // If the media player is not null, then it may be currently playing a sound.
-        if (mMediaPlayer != null) {
-            // Regardless of the current state of the media player, release its resources
-            // because we no longer need it.
-            mMediaPlayer.release();
-
-            // Set the media player back to null. For our code, we've decided that
-            // setting the media player to null is an easy way to tell that the media player
-            // is not configured to play an audio file at the moment.
-            mMediaPlayer = null;
-        }
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        releaseMediaPlayer();
-        Log.v(LOG_TAG, "onPause");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        releaseMediaPlayer();
-        Log.v(LOG_TAG, "onStop");
     }
 }

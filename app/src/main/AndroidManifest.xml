@@ -9,21 +9,24 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".PhrasesActivity"
-            android:label="Phrases"
+            android:name=".TranslationActivity"
             android:exported="false" />
+        <activity
+            android:name=".PhrasesActivity"
+            android:exported="false"
+            android:label="Phrases" />
         <activity
             android:name=".ColorsActivity"
-            android:label="Colors"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Colors" />
         <activity
             android:name=".FamilyActivity"
-            android:label="Family Members"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Family Members" />
         <activity
             android:name=".NumbersActivity"
-            android:label="Numbers"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Numbers" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
