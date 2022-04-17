@@ -12,15 +12,12 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 public class FamilyActivity extends TranslationActivity {
-    private static String LOG_TAG = FamilyActivity.class.getSimpleName();
+    private static final String LOG_TAG = FamilyActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.word_list);
 
-        addWords();
-        setupInteractions();
     }
 
     @Override

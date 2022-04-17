@@ -13,15 +13,12 @@ import java.util.ArrayList;
 
 public class ColorsActivity extends TranslationActivity {
 
-    private static String LOG_TAG = ColorsActivity.class.getSimpleName();
+    private static final String LOG_TAG = ColorsActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.word_list);
 
-        addWords();
-        setupInteractions();
     }
 
     @Override

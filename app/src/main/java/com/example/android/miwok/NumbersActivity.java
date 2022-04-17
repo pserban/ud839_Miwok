@@ -9,10 +9,7 @@ public class NumbersActivity extends TranslationActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.word_list);
 
-        addWords();
-        setupInteractions();
     }
 
     @Override

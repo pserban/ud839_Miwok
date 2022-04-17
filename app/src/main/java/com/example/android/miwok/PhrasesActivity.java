@@ -3,15 +3,12 @@ package com.example.android.miwok;
 import android.os.Bundle;
 
 public class PhrasesActivity extends TranslationActivity {
-    private static String LOG_TAG = PhrasesActivity.class.getSimpleName();
+    private static final String LOG_TAG = PhrasesActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.word_list);
 
-        addWords();
-        setupInteractions();
     }
 
     @Override

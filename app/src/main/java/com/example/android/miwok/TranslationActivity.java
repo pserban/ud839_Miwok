@@ -72,14 +72,16 @@ public abstract class TranslationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // setContentView(R.layout.word_list);
+        setContentView(R.layout.word_list);
 
-        // setupTranslationActivity();
+        setupInteractions();
     }
 
     protected abstract void addWords();
 
     protected void setupInteractions() {
+        addWords();
+
         WordAdapter itemsAdapter = new WordAdapter(this, words, R.color.category_numbers);
 
         ListView listView = findViewById(R.id.list);
