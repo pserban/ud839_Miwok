@@ -1,6 +1,8 @@
 package com.example.android.miwok;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.media.AudioManager;
@@ -74,15 +76,26 @@ public abstract class TranslationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word_list);
 
+        Toolbar toolbar = findViewById(R.id.word_list_toolbar);
+        setSupportActionBar(toolbar);
+
+        // Get a support ActionBar correspond to this toolbar
+        ActionBar ab = getSupportActionBar();
+
+        // Enable the Up button
+        ab.setDisplayHomeAsUpEnabled(true);
+
         setupInteractions();
     }
 
     protected abstract void addWords();
 
+    protected abstract int getColorResourceID();
+
     protected void setupInteractions() {
         addWords();
-
-        WordAdapter itemsAdapter = new WordAdapter(this, words, R.color.category_numbers);
+        int colorCategory = getColorResourceID();
+        WordAdapter itemsAdapter = new WordAdapter(this, words, colorCategory);
 
         ListView listView = findViewById(R.id.list);
 

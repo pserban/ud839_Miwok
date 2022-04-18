@@ -14,19 +14,23 @@
         <activity
             android:name=".PhrasesActivity"
             android:exported="false"
-            android:label="Phrases" />
+            android:label="Phrases"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".ColorsActivity"
             android:exported="false"
-            android:label="Colors" />
+            android:label="Colors"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".FamilyActivity"
             android:exported="false"
-            android:label="Family Members" />
+            android:label="Family Members"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".NumbersActivity"
             android:exported="false"
-            android:label="Numbers" />
+            android:label="Numbers"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

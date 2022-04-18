@@ -21,6 +21,11 @@ public class FamilyActivity extends TranslationActivity {
     }
 
     @Override
+    protected int getColorResourceID() {
+        return R.color.category_family;
+    }
+
+    @Override
     protected void addWords() {
         words.add(new Word("father", "әpә", R.drawable.family_father, R.raw.family_father));
         words.add(new Word("mother", "әṭa", R.drawable.family_mother, R.raw.family_mother));

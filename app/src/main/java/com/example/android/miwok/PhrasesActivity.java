@@ -12,6 +12,11 @@ public class PhrasesActivity extends TranslationActivity {
     }
 
     @Override
+    protected int getColorResourceID() {
+        return R.color.category_phrases;
+    }
+
+    @Override
     protected void addWords() {
         words.add(new Word("Where are you going?", "minto wuksus", R.raw.phrase_where_are_you_going));
         words.add(new Word("What is your name?", "tinnә oyaase'nә", R.raw.phrase_what_is_your_name));
